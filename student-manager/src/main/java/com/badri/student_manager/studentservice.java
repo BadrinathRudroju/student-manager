@@ -28,4 +28,18 @@ public class studentservice {
     public void delStudent(long id){
         repository.deleteById(id);
     }
+
+    public Student updateStudent(long id, Student updatedData){
+        Student existing =  repository.findById(id).orElse(null);
+
+        if(existing == null){
+            return null;
+        }
+        existing.setName(updatedData.getName());
+        existing.setBranch(updatedData.getBranch());
+        existing.setEmail(updatedData.getEmail());
+        repository.save(existing);
+
+        return existing;
+    }
 }

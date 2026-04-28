@@ -40,4 +40,14 @@ public class StudentController {
         service.delStudent(id);
         return ResponseEntity.ok("Student Deleted successfully");
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateStudent(@PathVariable long id, @RequestBody Student updatedData){
+        service.updateStudent(id,updatedData);
+
+        if(updatedData == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok("Updated successfully");
+    }
 }
