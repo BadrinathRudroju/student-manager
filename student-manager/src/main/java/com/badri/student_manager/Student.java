@@ -1,6 +1,7 @@
 package com.badri.student_manager;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "students")
@@ -9,8 +10,17 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @NotBlank(message = "It should have a name")
+    @Size(min = 2, max = 50, message= "It should be betweeen 2 to 50 characters")
     private String name;
+
+    @NotBlank(message = "It should have mail")
+    @Email(message = "email must be valid")
     private String email;
+
+    @Min(value = 1, message = "age should be atleast 1")
+    @Max(value = 100, message ="age should not exceed 100")
     private String branch;
 
     public Student(){
