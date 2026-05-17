@@ -1,5 +1,7 @@
-package com.badri.student_manager;
+package com.badri.student_manager.Service;
 
+import com.badri.student_manager.Entity.Student;
+import com.badri.student_manager.Repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

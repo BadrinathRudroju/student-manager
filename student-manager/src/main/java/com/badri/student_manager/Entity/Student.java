@@ -1,4 +1,4 @@
-package com.badri.student_manager;
+package com.badri.student_manager.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

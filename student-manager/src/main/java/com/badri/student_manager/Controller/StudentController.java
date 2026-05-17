@@ -1,5 +1,7 @@
-package com.badri.student_manager;
+package com.badri.student_manager.Controller;
 
+import com.badri.student_manager.Entity.Student;
+import com.badri.student_manager.Service.studentservice;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
