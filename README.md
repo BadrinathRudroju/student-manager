@@ -22,3 +22,7 @@ Global exception handling with meaningful error responses
 
 PostgreSQL persistence via Spring Data JPA
 
+It can check the students eligibilty to enter into the app using Jwt authentication
+
+It has two databases user and Student because we can't add entry of the teacher into the student database, student database is only for the data of the each student 
+
