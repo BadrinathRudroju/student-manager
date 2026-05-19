@@ -1,4 +1,4 @@
-package com.badri.student_manager.Security;
+package com.badri.student_manager.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -17,7 +17,7 @@ public class JwtUtil {
     private static final String SECRET_KEY = "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970";
     private static final long EXPIRATION_TIME = 1000 * 60 * 60 * 24; // 24 hours
 
-    public String generateToken(UserDetails userDetails){
+    public String generateToken(UserDetails UserDetails){
         return Jwts.builder().
                 subject(UserDetails.getUsername()).
                 issuedAt(new Date()).
@@ -26,7 +26,7 @@ public class JwtUtil {
                 compact();
     }
 
-    public boolean validateToken(String token, UserDetails userDetails){
+    public boolean isTokenValid(String token, UserDetails userDetails){
         final String email = extractEmail(token);
         return email.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }

@@ -1,4 +1,4 @@
-package com.badri.student_manager.Service;
+package com.badri.student_manager.service;
 
 import com.badri.student_manager.Entity.Student;
 import com.badri.student_manager.Repository.StudentRepository;
