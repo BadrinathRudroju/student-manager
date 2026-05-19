@@ -1,4 +1,4 @@
-package com.badri.student_manager.Service;
+package com.badri.student_manager.service;
 
 import com.badri.student_manager.UserRepository;
 import lombok.RequiredArgsConstructor;

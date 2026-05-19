@@ -1,6 +1,5 @@
 package com.badri.student_manager.security;
 
-import com.badri.student_manager.Security.JwtUtil;
 import com.badri.student_manager.service.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
