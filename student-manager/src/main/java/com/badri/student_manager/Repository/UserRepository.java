@@ -1,4 +1,4 @@
-package com.badri.student_manager;
+package com.badri.student_manager.Repository;
 
 import com.badri.student_manager.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
