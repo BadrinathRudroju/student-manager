@@ -1,4 +1,4 @@
-package com.badri.student_manager;
+package com.badri.student_manager.exceptions;
 
 
 
@@ -15,12 +15,14 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handlevalidationerrors(MethodArgumentNotValidException ex){
+    public ResponseEntity<Map<String, String>>
+                     handlevalidationerrors(MethodArgumentNotValidException ex){
 
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getFieldErrors().forEach
-                (error -> errors.put(error.getField(),error.getDefaultMessage()));
+                (error -> errors
+                        .put(error.getField(),error.getDefaultMessage()));
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }

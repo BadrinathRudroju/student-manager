@@ -1,6 +1,6 @@
 package com.badri.student_manager.service;
 
-import com.badri.student_manager.UserRepository;
+import com.badri.student_manager.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
