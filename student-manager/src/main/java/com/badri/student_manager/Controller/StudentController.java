@@ -1,8 +1,11 @@
 package com.badri.student_manager.Controller;
 
 import com.badri.student_manager.Entity.Student;
-import com.badri.student_manager.service.studentservice;
+import com.badri.student_manager.dto.StudentRequest;
+import com.badri.student_manager.dto.StudentResponse;
+import com.badri.student_manager.service.studentService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,31 +14,25 @@ import java.util.List;
 @RestController
 @RequestMapping("/students")
 public class StudentController {
-    private final studentservice service;
+    private final studentService service;
 
-    public StudentController(studentservice service){
+    public StudentController(studentService service){
         this.service = service;
     }
 
     @GetMapping
-    public List<Student> getAll(){
+    public List<StudentResponse> getAll(){
         return service.getAllStudents();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> getById(@PathVariable long id){
-        Student student= service.getStudentById(id);
-        if(student == null){
-            return ResponseEntity.notFound().build();
-        }else{
-            return ResponseEntity.ok(student);
-        }
+    public ResponseEntity<StudentResponse> getById(@PathVariable long id){
+            return ResponseEntity.ok(service.getStudentById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Student> addStudent(@Valid @RequestBody Student student){
-        Student saved = service.addstudent(student);
-        return ResponseEntity.ok(saved);
+    public ResponseEntity<StudentResponse> addStudent(@Valid @RequestBody Student student){
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.addstudent(student));
     }
 
     @DeleteMapping("/{id}")
@@ -45,12 +42,10 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateStudent(@PathVariable long id, @RequestBody Student updatedData){
-        service.updateStudent(id,updatedData);
+    public ResponseEntity<StudentResponse> updateStudent(@PathVariable long id,
+                                                @RequestBody StudentRequest updatedData){
 
-        if(updatedData == null){
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok("Updated successfully");
+
+        return ResponseEntity.ok(service.updateStudent(id,updatedData));
     }
 }

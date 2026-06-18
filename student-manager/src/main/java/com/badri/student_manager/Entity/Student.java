@@ -12,14 +12,14 @@ public class Student {
     private long id;
 
     @NotBlank(message = "It should have a name")
-    @Size(min = 2, max = 50, message= "It should be betweeen 2 to 50 characters")
+    @Size(min = 2, max = 50, message= "name should be between 2 to 50 characters")
     private String name;
 
-    @NotBlank(message = "It should have mail")
+    @NotBlank(message = "email is mandatory")
     @Email(message = "email must be valid")
     private String email;
 
-    @Min(value = 1, message = "age should be atleast 1")
+    @Min(value = 1, message = "age should be at least 1")
     @Max(value = 100, message ="age should not exceed 100")
     private String branch;
 
