@@ -2,6 +2,7 @@ package com.badri.student_manager.dto;
 
 import jakarta.validation.constraints.*;
 
+
 public record StudentRequest(
         @NotBlank(message = "It should have a name")
         @Size(min = 2, max = 50, message= "name should be betweeen 2 to 50 characters")
