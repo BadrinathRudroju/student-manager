@@ -182,23 +182,14 @@ Ensure code follows best practices:
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Support
 
 For issues, questions, or suggestions, please open an [issue](https://github.com/BadrinathRudroju/student-manager/issues) on GitHub.
 
-## Roadmap
 
-- [ ] Advanced filtering and pagination for student records
-- [ ] Export student data to CSV/Excel
-- [ ] Email notifications for student enrollment
-- [ ] Student performance analytics dashboard
-- [ ] Multi-tenant support for multiple institutions
 
 ---
 
-**Last Updated**: June 2024  
-**Maintained By**: BadrinathRudroju
+
