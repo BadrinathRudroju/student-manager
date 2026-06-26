@@ -39,7 +39,7 @@ public class JwtUtil {
         return extractClaim(token, Claims::getExpiration).before(new Date());
     }
 
-    // Generic claim extractor
+
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         Claims claims = Jwts.parser()
                 .verifyWith(getSigningKey())
@@ -49,7 +49,7 @@ public class JwtUtil {
         return claimsResolver.apply(claims);
     }
 
-    // Build signing key from secret
+
     private SecretKey getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
