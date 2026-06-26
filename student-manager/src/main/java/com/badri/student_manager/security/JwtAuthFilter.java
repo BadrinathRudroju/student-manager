@@ -28,31 +28,28 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
 
-        // Step 1: Get the Authorization header
+
         final String authHeader = request.getHeader("Authorization");
 
-        // Step 2: If no token, skip this filter
+
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // Step 3: Extract the token from header
         final String token = authHeader.substring(7);
 
-        // Step 4: Extract email from token
+
         final String email = jwtUtil.extractEmail(token);
 
-        // Step 5: If email found and user not already authenticated
+
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            // Step 6: Load user from database
+
             UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
-            // Step 7: Validate the token
             if (jwtUtil.isTokenValid(token, userDetails)) {
 
-                // Step 8: Create authentication object
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
                                 userDetails,
@@ -60,17 +57,17 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                                 userDetails.getAuthorities()
                         );
 
-                // Step 9: Add request details to auth object
+
                 authToken.setDetails(
                         new WebAuthenticationDetailsSource().buildDetails(request)
                 );
 
-                // Step 10: Tell Spring Security this user is authenticated
+
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
 
-        // Step 11: Pass request to next filter
+
         filterChain.doFilter(request, response);
     }
 }
